@@ -47,10 +47,10 @@ app.get("/", (req, res) => {
 //   console.log("Example app listening on port " + PORT);
 // });
 
-let port = process.env.PORT;
+let port = process.env.PORT || 5000;
 if (port == null || port == "") {
   port = 8000;
 }
 app.listen(port);
 
-console.log("Example app listening on port" + port);
+console.log("Example app listening on port" + port); 
