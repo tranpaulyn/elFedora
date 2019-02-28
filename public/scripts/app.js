@@ -4,14 +4,14 @@ $(() => {
     url: "/api/users"
   }).done((users) => {
     for(user of users) {
-      $("<div>").text(user.name).appendTo($(".col-6"));
+      $("<p>").text(user.name).appendTo($(".food-name"));
     }
   });;
 });
 
 $(window).scroll(function () {
     if ($(window).scrollTop() >= 50) {
-    $('#nav-bar').css('background','#bdb2a5');
+    $('#nav-bar').css('background','rgb(189, 178, 165, 0.5)');
     } else {
     $('#nav-bar').css('background','transparent');
     }
