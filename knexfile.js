@@ -30,11 +30,10 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations'
-    }
+    },
     ssl: true
   }
 
 };
 
-//saving the things
-//get 
+
