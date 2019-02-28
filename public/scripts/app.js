@@ -9,6 +9,7 @@ $(() => {
   });;
 });
 
+// Nav Bar
 $(window).scroll(function () {
     if ($(window).scrollTop() >= 50) {
     $('#nav-bar').css('background','rgb(189, 178, 165, 0.5)');
@@ -17,3 +18,14 @@ $(window).scroll(function () {
     }
     });
 
+// Food Nav 
+$(document).on('scroll', function () {
+    console.log('scroll top : ' + $(window).scrollTop());
+    if ($(window).scrollTop() >= $(".hero-image").height()) {
+      $(".col-3-left").addClass("col-3-left-fixed-top");
+    }
+
+    if ($(window).scrollTop() < $("#hero").height()) {
+      $(".col-3-left").removeClass("col-3-left-fixed-top");
+    }
+  });
