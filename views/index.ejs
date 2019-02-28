@@ -1,17 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home Page</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-
+<% include partials/_header.ejs %> 
+  
   <body>
-    <h1>Hello World!</h1>
-  </body>
+
+    <!-- Top nav bar (fixed) -->
+    <nav id="nav-bar">
+      <img class="logo" src="/images/fedora-hat.png">
+      <span class="header">elFedora</span>
+      <span class="contact">403-567-8970</span>
+    </nav>
+
+    <!-- Page-specific (main) content here -->
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1>HUNGER OFFICIALLY BUSTED</h1>
+        <H3>TAKE-OUT</H3>
+        <a href="#menu"><BUTTON type=button class="btn btn-outline-light">ORDER NOW</BUTTON></a>
+      </div>
+    </div>
+
+    <section class="menu-container">
+        <center><a id="menu"><h2 style="display:none">MENU</h2></a></center>
+
+      <div class="row">
+        <div class="col-3-left">
+            <center><p>Anchor Tags Here</p></center>
+            <ul>
+              <li>Appetizers</li>
+              <li>Entres</li>
+              <li>Dessert</li>
+            </ul>
+        </div>
+
+        <div class="col-6">
+            <article class="menu-item">
+              <header class="food-name">
+                <span class="food-item">Spaghetti</span>
+                <span class="food-price">
+                  $19.99
+                  <form>
+                      <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Choose...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                        <div class="col-auto my-1">
+                          <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                      </div>
+                    </form>
+                </span>
+                </header>
+                
+                <section class="food-description">
+                    <p>Tasty spaghtetti</p>
+                </section>
+              </article>
+
+              <article class="menu-item">
+                  <header class="food-name">
+                    <span class="food-item">Spaghetti</span>
+                    <span class="food-price">
+                      $19.99
+                      <form>
+                          <div class="form-row align-items-center">
+                            <div class="col-auto my-1">
+                              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select>
+                            </div>
+                            <div class="col-auto my-1">
+                              <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+                          </div>
+                        </form>
+                    </span>
+                    </header>
+                    
+                    <section class="food-description">
+                        <p>Tasty spaghtetti</p>
+                    </section>
+                </article>
+
+                <article class="menu-item">
+                    <header class="food-name">
+                      <span class="food-item">Spaghetti</span>
+                      <span class="food-price">
+                        $19.99
+                        <form>
+                            <div class="form-row align-items-center">
+                              <div class="col-auto my-1">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                  <option selected>Choose...</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                              </div>
+                              <div class="col-auto my-1">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                              </div>
+                            </div>
+                          </form>
+                      </span>
+                      </header>
+                      
+                      <section class="food-description">
+                          <p>Tasty spaghtetti</p>
+                      </section>
+                  </article>
+        </div>
+        <div class="col-3-right">
+          <center>
+          <img width="80%" src="/images/ourbag.png">
+          <br>
+          <h6 style="color: #8D9499;">Start adding items from the menu to build your order.</h6>
+        </center>
+        </div>
+      </div>
+
+    </section>
+
+    </body>
+    <footer>
+      <div class="row">
+        <div class="col-footer">
+          <h6>Location</h6>
+          <p>235 12th Ave SW</p>
+          <p>Calgary, AB</p>
+          <p>Canada</p>
+        </div>
+        <div class="col-footer">
+            <h6>Hours</h6>
+            <p>Sunday - Thursday</p>
+            <p>11:30am — 11:00pm</p>
+            <p>Friday — Saturday</p>
+            <p>11:30am — 1:00am</p>
+      </div>
+    </footer>
 </html>
