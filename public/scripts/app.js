@@ -9,7 +9,6 @@ $(window).scroll(function () {
 
 // Food Nav 
 $(document).on('scroll', function () {
-    console.log('scroll top : ' + $(window).scrollTop());
     if ($(window).scrollTop() >= $(".hero-image").height()) {
       $(".col-3-left").addClass("col-3-left-fixed-top");
     }
