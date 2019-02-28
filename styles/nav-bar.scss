@@ -1,0 +1,30 @@
+#nav-bar {
+  position: fixed;
+  top: 0px;
+  height: 10%;
+  width: 100%;
+  padding-right: 3em;
+  padding-left: 3em;
+  z-index: 1;
+  opacity: 1;
+
+  .header {
+    font-family: 'Homemade Apple', cursive;
+    color: #ffffff;
+    font-size: 200%;
+    position: relative;
+  }
+  
+  .logo {
+    width: 4em;
+    height: 4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  .contact {
+    float: right;
+    padding: 1em;
+  }
+
+}
