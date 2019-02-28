@@ -4,7 +4,7 @@ const authToken = '46978b40e2a2d8c35f92bc624ffab50b'
 const client = require('twilio')(accountSID, authToken);
 
 client.messages.create({
-    to: '17804995473',
+    to: '14037017111',
     from: '12038067699',
     body: 'You\'re an idiot'
 })
