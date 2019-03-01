@@ -53,13 +53,13 @@ app.post("/sendOrder", (req, res) => {
 let accountSid = process.env.TWILIO_ACCOUNT_SID;
 let authToken = process.env.TWILIO_AUTH_TOKEN;
 let client = require('twilio')(accountSid, authToken);
-let order = //Select with Knex
-let phoneNumber = //Phone number from table
+let order = placeholder;
+let phoneNumber = placeholder;
 
   client.messages.create({
     to: '17804995473',
     from: '12038067699',
-    body: 'Incoming Order#' + order ''
+    body: ('Incoming Order#' + order + '')
   });
 });
 
@@ -71,7 +71,7 @@ app.post('/sms', (req, res) => {
   let smsTextBerry = (req.body).replace('Sent from your Twilio trail account - ', '');
 
   client.messages.create({
-    to: knex('')
+    to: knex('order'),
     from: '12038067699',
     body: "Your order will be available for pickup in " + smsTextBerry + " minutes. See you soon!"
   });
