@@ -2,7 +2,8 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
+// const PORT        = process.env.PORT || 8080;
+// // const PORT        = process.env.PORT || 8080;
 // let port = process.env.PORT || 5000;
 // if (port == null || port == "") {
 //   port = 8000;
@@ -19,7 +20,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const menuRoutes = require("./routes/menu");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -39,8 +40,11 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// // Mount all resource routes
+// app.use("/api/users", usersRoutes(knex));
+
+// Mount all resource routes user.js
+app.use("/api/menu", menuRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
