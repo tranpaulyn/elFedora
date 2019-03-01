@@ -2,13 +2,13 @@
 
 require('dotenv').config();
 
-// // const PORT        = process.env.PORT || 8080;
-// let port = process.env.PORT || 5000;
-// if (port == null || port == "") {
-//   port = 8000;
-// }
+// const PORT        = process.env.PORT || 8080;
+let port = process.env.PORT || 5000;
+if (port == null || port == "") {
+  port = 8000;
+}
 
-const PORT        = process.env.PORT || 8080;
+// const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
@@ -60,9 +60,7 @@ app.listen(PORT, () => {
 //   console.log("Example app listening on port " + PORT);
 // });
 app.listen(port);
-
-
-// console.log("Example app listening on port" + port); 
+console.log("Example app listening on port" + port); 
 
 // Connor's Twillio Stuff 
 // SMS capability
