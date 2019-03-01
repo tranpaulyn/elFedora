@@ -59,7 +59,7 @@ let phoneNumber = //Phone number from table
   client.messages.create({
     to: '17804995473',
     from: '12038067699',
-    body: 'Order number ' + order ''
+    body: 'Incoming Order#' + order ''
   });
 });
 
