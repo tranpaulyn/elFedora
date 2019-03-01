@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+// Connors Twillio API
+  const MessagingResponse = require('twilio').twiml.MessagingResponse;
+  
+  const app = express();
+  
+  app.post('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+  
+    twiml.message('The Robots are coming! Head for the hills!');
+    console.log(res.body);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+  });
+  
+  
+
 $(window).scroll(function () {
     if ($(window).scrollTop() >= 50) {
     $('#nav-bar').css('background','rgb(189, 178, 165, 0.5)');
@@ -19,65 +35,47 @@ $(document).on('scroll', function () {
     }
   });
 
-  function renderMenuItem(data) {
-    let $menuItem = `<article class="menu-item">
+// Render Menu Function
+$(function() {
+  const renderMenuItem = function(menuData) {
+    return `<article class="menu-item">
     <header class="food-name">
-      <span class="food-item">Spaghetti</span>                    //Add KNEX query here
-      <span class="food-price">
-        $19.99                                                    //Add KNEX query here
-        <form>
-            <div class="form-row align-items-center">
-              <div class="col-auto my-1">
-                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                  <option selected>Choose...</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>                            //Add more options
-                </select>
-              </div>
-              <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary">Add</button>
-              </div>
-            </div>
-          </form>
-      </span>
-      </header>
-      
-      <section class="food-description">
-          <p>Tasty spaghtetti</p>                         //Add KNEX query here
-      </section>
-  </article>`
-
+    <span class="food-item">${menuData.name}</span>
+    <span class="food-price">
+    ${menuData.price}
+    <br><br>
+    <form class="form-inline" style="float:right; margin-right:-3em;">
+    <div class="form-group mb-2">
+      <label for="quantity" class="sr-only">Quantity</label>
+      <input style="width:50%;" type="quantity" class="form-control" id="quantity" placeholder="Quantity">
+    &nbsp; &nbsp;<button style="margin-top:9px;" type="submit" class="btn btn-danger mb-2">ADD</button>
+  </div>
+  </form>
+    </span>
+    </header>
+    <section class="food-description">
+    <p>${menuData.description}</p>
+    </section>
+    </article>`
 
   }
 
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
-const app = express();
-
-app.post('/sms', (req, res) => {
-  const twiml = new MessagingResponse();
-
-  twiml.message('The Robots are coming! Head for the hills!');
-  console.log(res.body);
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
-});
-
-
-// Append Users
+// Append Menu
   $(() => {
     $.ajax({
       method: "GET",
-      url: "/api/users"
-    }).done((users) => {
-      for(user of users) {
-        $("<p>").text(user.name).appendTo($(".food-name"));
+      url: "/api/menu"
+    }).done((menu) => {
+      for(let item in menu) {
+        console.log(menu[item]);
+        const elm = renderMenuItem(menu[item]);
+        $('.col-6').append(elm);
       }
     });;
   });
 
-})
+  // Add Quantity and Add to Cart
+
+});
+
+});
