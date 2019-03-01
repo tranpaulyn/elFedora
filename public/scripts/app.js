@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+// Connors Twillio API
+  const MessagingResponse = require('twilio').twiml.MessagingResponse;
+  
+  const app = express();
+  
+  app.post('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+  
+    twiml.message('The Robots are coming! Head for the hills!');
+    console.log(res.body);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+  });
+  
+  
+
 $(window).scroll(function () {
     if ($(window).scrollTop() >= 50) {
     $('#nav-bar').css('background','rgb(189, 178, 165, 0.5)');
