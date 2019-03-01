@@ -44,8 +44,7 @@ $(function() {
 
   }
 
-
-// Append Users
+// Append Menu
   $(() => {
     $.ajax({
       method: "GET",
@@ -55,13 +54,12 @@ $(function() {
         console.log(menu[item]);
         const elm = renderMenuItem(menu[item]);
         $('.col-6').append(elm);
-      //   $(".food-item").text(item.name).appendTo($(".food-name"))
-      //   $(".food-price").text(item.price).appendTo($(".food-name"))
-      //   $("<p>").text(item.description).appendTo($(".food-description"))
       }
     });;
   });
 
-})
+  // Add Quantity and Add to Cart
+
+});
 
 });
