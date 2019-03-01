@@ -22,8 +22,9 @@ $(document).on('scroll', function () {
 // Render Menu Function
 $(function() {
   const renderMenuItem = function(menuData) {
-    return `<article class="menu-item">
+    return `<article id="${menuData.id}" class="menu-item">
     <header class="food-name">
+    <span class='food-category'>${menuData.id}</span>
     <span class="food-item">${menuData.name}</span>
     <span class="food-price">
     ${menuData.price}
@@ -51,8 +52,9 @@ $(function() {
       method: "GET",
       url: "/api/menu"
     }).done((menu) => {
+      console.log(menu);
+
       for(let item in menu) {
-        console.log(menu[item]);
         const elm = renderMenuItem(menu[item]);
         $('.col-6').append(elm);
       //   $(".food-item").text(item.name).appendTo($(".food-name"))
