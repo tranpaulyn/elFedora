@@ -18,12 +18,9 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-// app.listen(PORT, () => {
-//   console.log("Example app listening on port " + PORT);
-// });
-// app.listen(port);
 
-// console.log("Example app listening on port" + port); 
+app.listen(port);
+console.log("Example app listening on port" + port); 
 
 
 // Seperated Routes for each Resource
@@ -52,23 +49,10 @@ app.use(express.static("public"));
 app.use("/api/menu", menuRoutes(knex));
 app.use("/api/cart", cartRoutes(knex));
 
-// Add to cart DB
-app.post("/add-to-cart", (req, res) => {
-  console.log('this is the res', req.body);
-  // console.log('this is the res.body', res.body);
-  // knex('cart').insert
-  res.redirect('/');
-});
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
-// app.listen(port);
 
 
 // Connor's Twillio Stuff 
