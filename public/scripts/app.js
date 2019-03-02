@@ -51,7 +51,6 @@ $(function() {
   });
 
 //   Append Cart
-
 let priceArray = [];
 
  $(() => {
@@ -64,7 +63,7 @@ let priceArray = [];
       const foodName = $menuArticle.attr("data-name");
       let foodPrice = 0;
 
-
+      // Find the price of the item clicked
       for(let item in menu) {
         if (menu[item].name === foodName) {
           foodPrice = menu[item].price;
@@ -84,11 +83,12 @@ let priceArray = [];
       } else {
         priceArray.push(foodPrice)
         let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice)
-        $('.col-3-right').append($p);
+        $('.appendCart').append($p);
 
       }
       $('#logoBag').css('display', 'none');
       $('#build-order').css('display', 'none');
+      $('#checkout').show();
 
       // Total Price Business
       // Calculating Total Price
@@ -99,15 +99,15 @@ let priceArray = [];
       }
       totalPrice = sum.toFixed(2);
       console.log(`$ ${totalPrice}`);
-      // let $p2 = $(`<p>`).text(`Total Price: ${totalPrice}`)
-      // $('.col-3-right').append($p2);
       $('#totalPrice').show();
-      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`)
-      
-
-
+      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
     })
    })
+ })
+
+ // Checkout Cart
+ $('#checkout').on('click', function() {
+   console.log('yahoo');
  })
 
 });
