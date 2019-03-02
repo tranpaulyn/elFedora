@@ -49,33 +49,70 @@ $(function() {
         const elm = renderMenuItem(menu[item]);
         $('.col-6').append(elm);
       }
-    });;
+    });
   });
 
 //   Append Cart
+let priceArray = [];
 
-  $("#menu-wrapper").on("click", ".add-to-cart", function(menuData) {
-    const $menuArticle = $(this).closest('.menu-item');
-    const foodName = $menuArticle.attr("data-name");
-    const PriceId = $menuArticle.attr('data-price');
-    // checking if already in cart
-    const $existingItem = $(`[data-cart-name='${foodName}']`);
-    console.log("ehkgdszfkjhfhsfj", $existingItem)
+ $(() => {
+   $.ajax({
+     method: "GET",
+     url: "/api/menu"
+   }).done((menu) => {
+    $("#menu-wrapper").on("click", ".add-to-cart", function() {
+      const $menuArticle = $(this).closest('.menu-item');
+      const foodName = $menuArticle.attr("data-name");
+      let foodPrice = 0;
 
-    if ($existingItem.length) {
-      let counter = $existingItem.attr("data-count");
-      counter = counter ? Number(counter) + 1 : 1;
-      $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter)
-    } else {
-      let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1')
-      $('.col-3-right').append($p);
-    }
-    $('#logoBag').css('display', 'none');
-    $('#build-order').css('display', 'none');
-  })
+      // Find the price of the item clicked
+      for(let item in menu) {
+        if (menu[item].name === foodName) {
+          foodPrice = menu[item].price;
+        }
+      }
+    
+      // checking if already in cart
+      const $existingItem = $(`[data-cart-name='${foodName}']`);
+  
+      if ($existingItem.length) {
+        priceArray.push(foodPrice)
+        let counter = $existingItem.attr("data-count");
+        counter = counter ? Number(counter) + 1 : 1;
+        foodPrice = counter * foodPrice;
+        foodPrice = foodPrice.toFixed(2);
+        $existingItem.attr("data-count", counter, foodPrice).text(foodName + ' x ' + counter + '  $' + foodPrice)
+      } else {
+        priceArray.push(foodPrice)
+        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice)
+        $('.appendCart').append($p);
+
+      }
+      $('#logoBag').css('display', 'none');
+      $('#build-order').css('display', 'none');
+      $('#checkout').show();
+
+      // Total Price Business
+      // Calculating Total Price
+      let sum = 0;
+      let totalPrice = 0;
+      for (var i = 0; i < priceArray.length; i++) {
+        sum += Number(priceArray[i])
+      }
+      totalPrice = sum.toFixed(2);
+      console.log(`$ ${totalPrice}`);
+      $('#totalPrice').show();
+      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
+    })
+   })
+ })
+
+ // Checkout Cart
+ $('#checkout').on('click', function() {
+   console.log('yahoo');
+ })
 
 });
-
 
 
 });
