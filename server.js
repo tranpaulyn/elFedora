@@ -2,9 +2,9 @@
 
 require('dotenv').config();
 
-let port = process.env.PORT || 80;
-if (port == null || port == "") {
-  port = 8000;
+let PORT = process.env.PORT || 5000;
+if (PORT == null || PORT == "") {
+  PORT = 8000;
 }
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
@@ -18,8 +18,8 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 
-app.listen(port);
-console.log("Example app listening on port" + port); 
+app.listen(PORT);
+console.log("Example app listening on port" + PORT); 
 
 // Seperated Routes for each Resource
 const menuRoutes = require("./routes/menu");
