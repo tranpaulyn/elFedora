@@ -23,16 +23,18 @@ module.exports = (knex) => {
       customerName: req.body.customerName,
       phoneNumber: req.body.phoneNumber,
       totalPrice: req.body.totalPrice
-    })
+    }) //First, message goes to Restaurant
     .then (function(res){
       client.messages.create({
-        to: req.body.phoneNumber,
+        to: '17804995473',
         from: '12038067699',
-        body: 'This is where the content of the order will go'
+        body: (req.body.orderTicket + '   ' + req.body.phoneNumber)
     })
-  .then((message) => console.log((message.body).replace('Sent from your Twilio trial account - ', '')));    })
+  .then((message) => console.log((message.body).replace('Sent from your Twilio trial account - ', '')));    
+})
 
-    console.log(req.body.customerName);
+
+
 
   })
 

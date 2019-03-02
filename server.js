@@ -26,6 +26,7 @@ console.log("Example app listening on port" + port);
 // Seperated Routes for each Resource
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
+const smsRoutes = require("./routes/sms");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -48,42 +49,12 @@ app.use(express.static("public"));
 // Mount all resource routes user.js
 app.use("/api/menu", menuRoutes(knex));
 app.use("/api/cart", cartRoutes(knex));
+app.use("/sms", smsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-
-
-// Connor's Twillio Stuff 
-// SMS capability
-//First, message goes to Restaurant
-app.post("/sendOrder", (req, res) => {
-  let accountSid = process.env.TWILIO_ACCOUNT_SID;
-  let authToken = process.env.TWILIO_AUTH_TOKEN;
-  let client = require('twilio')(accountSid, authToken);
-  
-    client.messages.create({
-      to: '17804995473',
-      from: '12038067699',
-      body: 'This is where the content of the order will go'
-  })
-  .then((message) => console.log((message.body).replace('Sent from your Twilio trial account - ', '')));
-  })
-  
-  //Then, message is sent from kitchen to server indicating cook-time.
-  app.post('/sms', (req, res) => {
-    let MessagingResponse = require('twilio').twiml.MessagingResponse;
-    let twiml = new MessagingResponse();
-    console.log(req);
-    twiml.message('The Robots are coming! Head for the hills!');
-  
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
-  });
-
-
 
 
 

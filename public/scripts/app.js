@@ -106,7 +106,7 @@ let priceArray = [];
         sum += Number(priceArray[i])
       }
       totalPrice = sum.toFixed(2);
-      console.log(`$ ${totalPrice}`);
+      // console.log(`$ ${totalPrice}`);
       $('#totalPrice').show();
       $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
     })
@@ -126,12 +126,16 @@ $('#checkout').on('click', function() {
   let customerName = ($('#InputName').val());
   let customerPhone = ($('#InputPhoneNumber').val());
   let orderTotal = ($('#totalPrice').text().replace("Total Price $ ", ""));
+  let orderItems = ($('.cart-item').text())
 
   let addOrder = {
     customerName: customerName,
     phoneNumber: customerPhone,
-    totalPrice: orderTotal
+    totalPrice: orderTotal,
+    orderTicket: orderItems
   };
+
+  console.log($('.cart-item').text());
 
   $.ajax({
     method: "POST",
