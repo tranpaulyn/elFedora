@@ -1,3 +1,7 @@
+// const env = process.env.NODE_ENV || 'development';
+// const knexConfig = require('./../../knexfile');
+// const knex = require('knex')(knexConfig[env]);
+
 $(document).ready(function() {
 
 $(window).scroll(function () {
@@ -51,7 +55,6 @@ $(function() {
   });
 
 //   Append Cart
-
 let priceArray = [];
 
  $(() => {
@@ -64,7 +67,7 @@ let priceArray = [];
       const foodName = $menuArticle.attr("data-name");
       let foodPrice = 0;
 
-
+      // Find the price of the item clicked
       for(let item in menu) {
         if (menu[item].name === foodName) {
           foodPrice = menu[item].price;
@@ -84,11 +87,16 @@ let priceArray = [];
       } else {
         priceArray.push(foodPrice)
         let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice)
-        $('.col-3-right').append($p);
+        $('.appendCart').append($p);
 
       }
       $('#logoBag').css('display', 'none');
       $('#build-order').css('display', 'none');
+      $('#checkout').show();
+      $('#customerInfo').show();
+      $('.loading').hide();
+      $('.cart-item').show();
+      $('#customerInfo').show();
 
       // Total Price Business
       // Calculating Total Price
@@ -98,19 +106,56 @@ let priceArray = [];
         sum += Number(priceArray[i])
       }
       totalPrice = sum.toFixed(2);
-      console.log(`$ ${totalPrice}`);
-      // let $p2 = $(`<p>`).text(`Total Price: ${totalPrice}`)
-      // $('.col-3-right').append($p2);
+      // console.log(`$ ${totalPrice}`);
       $('#totalPrice').show();
-      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`)
-      
-
-
+      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
     })
    })
  })
 
 });
+
+$('#checkout').on('click', function() {
+  event.preventDefault();
+  $('.loading').show();
+  $('#customerInfo').hide();
+  $('#checkout').hide();
+  $('#totalPrice').hide();
+  $('.cart-item').hide();
+
+  let customerName = ($('#InputName').val());
+  let customerPhone = ($('#InputPhoneNumber').val());
+  let orderTotal = ($('#totalPrice').text().replace("Total Price $ ", ""));
+  let orderItems = ($('.cart-item').text())
+
+  let addOrder = {
+    customerName: customerName,
+    phoneNumber: customerPhone,
+    totalPrice: orderTotal,
+    orderTicket: orderItems
+  };
+
+  console.log($('.cart-item').text());
+
+  $.ajax({
+    method: "POST",
+    url: "/api/cart",
+    data: addOrder
+  });
+
+
+
+  // console.log($('#InputName').val());
+  // console.log($('#InputPhoneNumber').val());
+  // console.log($('#totalPrice').text().replace("Total Price $ ", ""));
+
+
+  
+})
+
+// $.post( "/api/cart", function( data ) {
+
+// });
 
 
 });

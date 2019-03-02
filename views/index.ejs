@@ -42,8 +42,29 @@
           <img id="logoBag" width="80%" src="/images/OurBag.png">
           <br>
           <h6 id="build-order" style="color: #8D9499;">Start adding items from the menu to build your order.</h6>
-          <h6 id="totalPrice" style="display:none">$0.00</h6>
         </center>
+          <div class="appendCart"></div>
+          <h6 id="totalPrice" style="display:none">$0.00</h6>
+
+          <form id="customerInfo" style="display:none; margin-top:2em;">
+              <div class="form-group">
+                <input type="name" class="form-control" id="InputName"  placeholder="Enter Your Name">
+              </div>
+              <div class="form-group">
+                <input type="phoneNumber" class="form-control" id="InputPhoneNumber" placeholder="Enter Phone Number">
+              </div>
+            <center><button style="display:none" id="checkout" type="submit" class="btn btn-danger">CHECK OUT</button></center>
+            </form>
+
+
+            <div class="loading" style="display:none;">
+              <center>
+                <h6>Please wait for us to respond!</h6>
+                <br>
+                <img width="50%" src="/images/loading.gif">
+              </center>
+              </div>
+
         </div>
       </div>
 
