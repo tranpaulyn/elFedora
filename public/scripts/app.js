@@ -90,6 +90,8 @@ let priceArray = [];
       $('#logoBag').css('display', 'none');
       $('#build-order').css('display', 'none');
 
+      // Total Price Business
+      // Calculating Total Price
       let sum = 0;
       let totalPrice = 0;
       for (var i = 0; i < priceArray.length; i++) {
@@ -97,6 +99,12 @@ let priceArray = [];
       }
       totalPrice = sum.toFixed(2);
       console.log(`$ ${totalPrice}`);
+      // let $p2 = $(`<p>`).text(`Total Price: ${totalPrice}`)
+      // $('.col-3-right').append($p2);
+      $('#totalPrice').show();
+      $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`)
+      
+
 
     })
    })
