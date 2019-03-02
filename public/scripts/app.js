@@ -47,30 +47,36 @@ $(function() {
         const elm = renderMenuItem(menu[item]);
         $('.col-6').append(elm);
       }
-    });;
+    });
   });
 
 //   Append Cart
 
-  $("#menu-wrapper").on("click", ".add-to-cart", function() {
-    const $menuArticle = $(this).closest('.menu-item');
-    const foodName = $menuArticle.attr("data-name");
+ $(() => {
+   $.ajax({
+     method: "GET",
+     url: "/api/menu"
+   }).done((menu) => {
+    $("#menu-wrapper").on("click", ".add-to-cart", function() {
+      const $menuArticle = $(this).closest('.menu-item');
+      const foodName = $menuArticle.attr("data-name");
+    
+      // checking if already in cart
+      const $existingItem = $(`[data-cart-name='${foodName}']`);
   
-    // checking if already in cart
-    const $existingItem = $(`[data-cart-name='${foodName}']`);
-    console.log("ehkgdszfkjhfhsfj", $existingItem)
-
-    if ($existingItem.length) {
-      let counter = $existingItem.attr("data-count");
-      counter = counter ? Number(counter) + 1 : 1;
-      $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter)
-    } else {
-      let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1')
-      $('.col-3-right').append($p);
-    }
-    $('#logoBag').css('display', 'none');
-    $('#build-order').css('display', 'none');
-  })
+      if ($existingItem.length) {
+        let counter = $existingItem.attr("data-count");
+        counter = counter ? Number(counter) + 1 : 1;
+        $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter)
+      } else {
+        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1 ')
+        $('.col-3-right').append($p);
+      }
+      $('#logoBag').css('display', 'none');
+      $('#build-order').css('display', 'none');
+    })
+   })
+ })
 
 });
 
