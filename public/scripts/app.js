@@ -22,26 +22,19 @@ $(document).on('scroll', function () {
 // Render Menu Function
 $(function() {
   const renderMenuItem = function(menuData) {
-    return `<article class="menu-item">
+    return `<article class="menu-item" data-name='${menuData.name}'>
     <header class="food-name">
     <span class="food-item">${menuData.name}</span>
     <span class="food-price">
     ${menuData.price}
     <br><br>
-    <form class="form-inline" style="float:right; margin-right:-3em;">
-    <div class="form-group mb-2">
-      <label for="quantity" class="sr-only">Quantity</label>
-      <input style="width:50%;" type="quantity" class="form-control" id="quantity" placeholder="Quantity">
-    &nbsp; &nbsp;<button style="margin-top:9px;" type="submit" class="btn btn-danger mb-2">ADD</button>
-  </div>
-  </form>
+    <button style="margin-top:9px;" type="submit" class="btn btn-danger mb-2 add-to-cart">ADD</button>
     </span>
     </header>
     <section class="food-description">
     <p>${menuData.description}</p>
     </section>
     </article>`
-
   }
 
 // Append Menu
@@ -51,15 +44,36 @@ $(function() {
       url: "/api/menu"
     }).done((menu) => {
       for(let item in menu) {
-        console.log(menu[item]);
         const elm = renderMenuItem(menu[item]);
         $('.col-6').append(elm);
       }
     });;
   });
 
-  // Add Quantity and Add to Cart
+//   Append Cart
+
+  $("#menu-wrapper").on("click", ".add-to-cart", function() {
+    const $menuArticle = $(this).closest('.menu-item');
+    const foodName = $menuArticle.attr("data-name");
+  
+    // checking if already in cart
+    const $existingItem = $(`[data-cart-name='${foodName}']`);
+    console.log("ehkgdszfkjhfhsfj", $existingItem)
+
+    if ($existingItem.length) {
+      let counter = $existingItem.attr("data-count");
+      counter = counter ? Number(counter) + 1 : 1;
+      $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter)
+    } else {
+      let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1')
+      $('.col-3-right').append($p);
+    }
+    $('#logoBag').css('display', 'none');
+    $('#build-order').css('display', 'none');
+  })
 
 });
+
+
 
 });
