@@ -1,7 +1,6 @@
-const env = process.env.NODE_ENV || 'development';
-const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig[env]);
-const knexLogger  = require('knex-logger');
+// const env = process.env.NODE_ENV || 'development';
+// const knexConfig = require('./../../knexfile');
+// const knex = require('knex')(knexConfig[env]);
 
 $(document).ready(function() {
 
@@ -13,16 +12,16 @@ $(window).scroll(function () {
     }
     });
 
-// // Food Nav 
-// $(document).on('scroll', function () {
-//     if ($(window).scrollTop() >= $(".hero-image").height()) {
-//       $(".col-3-left").addClass("col-3-left-fixed-top");
-//     }
+// Food Nav 
+$(document).on('scroll', function () {
+    if ($(window).scrollTop() >= $(".hero-image").height()) {
+      $(".col-3-left").addClass("col-3-left-fixed-top");
+    }
 
-//     if ($(window).scrollTop() < $(".hero-image").height()) {
-//       $(".col-3-left").removeClass("col-3-left-fixed-top");
-//     }
-//   });
+    if ($(window).scrollTop() < $("#hero").height()) {
+      $(".col-3-left").removeClass("col-3-left-fixed-top");
+    }
+  });
 
 // Render Menu Function
 $(function() {
@@ -87,13 +86,17 @@ let priceArray = [];
         $existingItem.attr("data-count", counter, foodPrice).text(foodName + ' x ' + counter + '  $' + foodPrice)
       } else {
         priceArray.push(foodPrice)
-        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(`${foodName} x 1 $${foodPrice}`)
+        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice)
         $('.appendCart').append($p);
 
       }
       $('#logoBag').css('display', 'none');
       $('#build-order').css('display', 'none');
       $('#checkout').show();
+      $('#customerInfo').show();
+      $('.loading').hide();
+      $('.cart-item').show();
+      $('#customerInfo').show();
 
       // Total Price Business
       // Calculating Total Price
@@ -110,19 +113,45 @@ let priceArray = [];
    })
  })
 
-//  const addOrder = {
-//    order_id: 
-//  }
-
-//  // Checkout Cart
-//  $('#checkout').on('click', function() {
-//    knex('cart').insert(addOrder).asCallback(err,res) => {
-//      console.log(res);
-//    }
-//  })
-
-
 });
+
+$('#checkout').on('click', function() {
+  event.preventDefault();
+  $('.loading').show();
+  $('#customerInfo').hide();
+  $('#checkout').hide();
+  $('#totalPrice').hide();
+  $('.cart-item').hide();
+
+  let customerName = ($('#InputName').val());
+  let customerPhone = ($('#InputPhoneNumber').val());
+  let orderTotal = ($('#totalPrice').text().replace("Total Price $ ", ""));
+
+  let addOrder = {
+    customerName: customerName,
+    phoneNumber: customerPhone,
+    totalPrice: orderTotal
+  };
+
+  $.ajax({
+    method: "POST",
+    url: "/api/cart",
+    data: addOrder
+  });
+
+
+
+  // console.log($('#InputName').val());
+  // console.log($('#InputPhoneNumber').val());
+  // console.log($('#totalPrice').text().replace("Total Price $ ", ""));
+
+
+  
+})
+
+// $.post( "/api/cart", function( data ) {
+
+// });
 
 
 });

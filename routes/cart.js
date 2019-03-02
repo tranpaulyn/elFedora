@@ -14,4 +14,19 @@ module.exports = (knex) => {
     });
   });
 
+  router.post("/", function(req, res) {
+    knex('orders')
+    .insert({
+      customerName: req.body.customerName,
+      phoneNumber: req.body.phoneNumber,
+      totalPrice: req.body.totalPrice
+    })
+    .then (function(res){
+      console.log('NICE ONE')
+    })
+
+    console.log(req.body.customerName);
+
+  })
+
   return router}
