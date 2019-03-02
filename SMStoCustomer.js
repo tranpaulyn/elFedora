@@ -1,7 +1,8 @@
-const accountSID = require('/twilioSID');
-const authToken = require('/twilioAuth');
+require('dotenv').config();
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 
-const client = require('twilio')(accountSID, authToken);
+const client = require('twilio')(accountSid, authToken);
 
 client.messages.create({
     to: customer, //make sure to declare the form entry body here to test the text capability 
