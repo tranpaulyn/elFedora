@@ -2,8 +2,7 @@
 
 require('dotenv').config();
 
-// const PORT        = process.env.PORT || 8080;
-let port = process.env.PORT || 5000;
+let port = process.env.PORT || 80;
 if (port == null || port == "") {
   port = 8000;
 }
