@@ -23,6 +23,7 @@ app.listen(port);
 console.log("Example app listening on port" + port); 
 
 
+
 // Seperated Routes for each Resource
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
@@ -53,6 +54,11 @@ app.use("/api/cart", cartRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+// app.listen(PORT, () => {
+//   console.log("Example app listening on port " + PORT);
+// });
+// app.listen(port);
 
 
 // Connor's Twillio Stuff 
