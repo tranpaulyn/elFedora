@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 
+// const PORT        = process.env.PORT || 8080;
 let port = process.env.PORT || 5000;
 if (port == null || port == "") {
   port = 8000;
@@ -53,6 +54,3 @@ app.use("/sms", smsRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-
-
