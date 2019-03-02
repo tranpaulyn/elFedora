@@ -60,6 +60,13 @@ $(function() {
     $("#menu-wrapper").on("click", ".add-to-cart", function() {
       const $menuArticle = $(this).closest('.menu-item');
       const foodName = $menuArticle.attr("data-name");
+      let foodPrice = 0;
+      
+      for(let item in menu) {
+        if (menu[item].name === foodName) {
+          foodPrice = menu[item].price;
+        }
+      }
     
       // checking if already in cart
       const $existingItem = $(`[data-cart-name='${foodName}']`);
@@ -67,9 +74,11 @@ $(function() {
       if ($existingItem.length) {
         let counter = $existingItem.attr("data-count");
         counter = counter ? Number(counter) + 1 : 1;
-        $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter)
+        foodPrice = counter * foodPrice
+        foodPrice = foodPrice.toFixed(2)
+        $existingItem.attr("data-count", counter).text(foodName + ' x ' + counter + '  $' + foodPrice)
       } else {
-        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1 ')
+        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1'>`).text(foodName + ' x 1 $' + foodPrice)
         $('.col-3-right').append($p);
       }
       $('#logoBag').css('display', 'none');
