@@ -22,7 +22,7 @@ $(document).on('scroll', function () {
 // Render Menu Function
 $(function() {
   const renderMenuItem = function(menuData) {
-    return `<article class="menu-item" data-name='${menuData.name}'>
+    return `<article id="${menuData.id}" class="menu-item" data-name='${menuData.name}'>
     <header class="food-name">
     <span class="food-item">${menuData.name}</span>
     <span class="food-price">
@@ -72,17 +72,19 @@ let priceArray = [];
     
       // checking if already in cart
       const $existingItem = $(`[data-cart-name='${foodName}']`);
-  
+      const deleteButton = $(`<button id="${foodName}" type="Submit" class="btn btn-danger">Delete</button>`)
+
+      
       if ($existingItem.length) {
         priceArray.push(foodPrice)
         let counter = $existingItem.attr("data-count");
         counter = counter ? Number(counter) + 1 : 1;
         foodPrice = counter * foodPrice;
         foodPrice = foodPrice.toFixed(2);
-        $existingItem.attr("data-count", counter, foodPrice).text(foodName + ' x ' + counter + '  $' + foodPrice)
+        $existingItem.attr("data-count", counter, foodPrice).attr("data-total", foodPrice).text(foodName + ' x ' + counter + '  $' + foodPrice).append(deleteButton)
       } else {
         priceArray.push(foodPrice)
-        let $p = $(`<p class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice)
+        let $p = $(`<p id="${foodName}-ID"  class="cart-item" data-cart-name='${foodName}' data-count='1' data-price='${foodPrice}' data-total='${foodPrice}'>`).text(foodName + ' x 1 $' + foodPrice).append(deleteButton)
         $('.appendCart').append($p);
 
       }
@@ -101,6 +103,16 @@ let priceArray = [];
       console.log(`$ ${totalPrice}`);
       $('#totalPrice').show();
       $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
+
+      // delete food from cart
+      $(`[id='${foodName}']`).on('click', function() {
+        // let foodTotal = $(`[id='${foodName}-ID']`).data('total')
+        // totalPrice = Number(totalPrice) - Number(foodTotal)
+        // totalPrice.toFixed(2);
+        // $('#totalPrice').replaceWith(`<h5 id="totalPrice">Total Price $ ${totalPrice}</h5>`) // Update Total Price
+        // priceArray = [totalPrice]
+        $(`[id='${foodName}-ID']`).remove()
+      });
     })
    })
  })
