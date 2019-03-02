@@ -21,8 +21,6 @@ const knexLogger  = require('knex-logger');
 app.listen(port);
 console.log("Example app listening on port" + port); 
 
-
-
 // Seperated Routes for each Resource
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
