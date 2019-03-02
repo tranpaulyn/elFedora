@@ -33,11 +33,10 @@ module.exports = {
       tableName: 'migrations'
     },
     seeds: {
-      directory: './db/seeds'
+      directory: './db/seeds/production'
     }
   }
 
 };
 
-//saving the things
-//get 
+
