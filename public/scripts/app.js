@@ -54,10 +54,10 @@ $(function() {
 
 //   Append Cart
 
-  $("#menu-wrapper").on("click", ".add-to-cart", function() {
+  $("#menu-wrapper").on("click", ".add-to-cart", function(menuData) {
     const $menuArticle = $(this).closest('.menu-item');
     const foodName = $menuArticle.attr("data-name");
-  
+    const PriceId = $menuArticle.attr('data-price');
     // checking if already in cart
     const $existingItem = $(`[data-cart-name='${foodName}']`);
     console.log("ehkgdszfkjhfhsfj", $existingItem)
