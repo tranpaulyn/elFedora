@@ -12,7 +12,6 @@ body {
   width: 15%;
   height: 100%; 
   position: relative; 
-  z-index: 1;
   left: 0;
   background-color: #fff;
   border-top-left-radius: 0.5em;
@@ -20,21 +19,11 @@ body {
   padding-top: 1em;
 }
 
-// .col-3-left-fixed-top {
-//   width: 25%;
-//   height: 100%; 
-//   background-color: #fff;
-//   border-top-left-radius: 0.5em;
-//   border-bottom-left-radius: 0.5em;
-//   padding-top: 1em;
-//   position:fixed;
-// }
 
 .col-3-right {
   width: 30%;
   height: 100%; 
   position: relative; 
-  z-index: 1;
   left: 0;
   background-color: #fff;
   border-radius: 0.5em;
