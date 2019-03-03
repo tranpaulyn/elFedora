@@ -86,6 +86,7 @@ $(document).ready(function() {
                 $("#logoBag").css("display", "block");
                 $("#build-order").css("display", "block");
                 $totalPriceElement.hide();
+                $('#customerInfo').hide();
               }
             } else {
               $cartItem.attr("data-count", cartItemCount);
