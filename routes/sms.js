@@ -14,15 +14,19 @@ module.exports = (knex) => {
   router.post('/', (req, res) => {
 
     let twiml = new MessagingResponse();
-    console.log(req);
-    twiml.message('The Robots are coming! Head for the hills!');
+    alert(req.body.Body);
+    // twiml.message('The Robots are coming! Head for the hills!');
   
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
-  });
+    // res.writeHead(200, {'Content-Type': 'text/xml'});
+    // res.end(twiml.toString());
+
+      client.messages.create({
+        to: '17804995473',
+        from: '12038067699',
+        body: ((req.body.Body).replace('Sent from your Twilio trial account - ', ''))
+    })
 
   return router
 
-}
-
+})}
 
