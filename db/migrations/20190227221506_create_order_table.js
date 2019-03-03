@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('orders', function (table) {
       table.increments();
       table.string('customerName');
-      table.decimal('phoneNumber');
-      table.decimal('totalPrice');
-      table.date('orderTime');
+      table.bigint('phoneNumber');
+      table.decimal('totalPrice',10,2);
+      table.time('orderTime').defaultTo(knex.fn.now());
     });
   };
   

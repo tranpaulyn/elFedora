@@ -1,7 +1,9 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.table('menu', function (table) {
-        table.decimal('price', 10, 2);
+    return knex.schema.createTable('menu', function (table) {
+        table.increments();
+        table.string('name');
+        table.decimal('price');
         table.string('description');
         table.string('category');
       });
