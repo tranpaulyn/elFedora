@@ -139,9 +139,11 @@ $(document).ready(function() {
    
   
     function explode(){
-      alert("Boom!");
+      $('.loading').hide();
+      $('.col-3-right').append("<h6>Your order will be ready in 45 minutes!</h6>");
+      $('.col-3-right').append(`<img src="/images/tenor.gif">`);
     }
-    setTimeout(explode, 2800);
+    setTimeout(explode, 28000);
     
   })
 
