@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-// const env = process.env.NODE_ENV || 'development';
-// const knexConfig = require('./../../knexfile');
-// const knex = require('knex')(knexConfig[env]);
-
-$(document).ready(function() {
-=======
->>>>>>> 3a6ab6b699ca0c45b07cfe13e0a244659ea997a9
 
 $(document).ready(function() {
   $(window).scroll(function() {
@@ -119,7 +111,6 @@ $(document).ready(function() {
       console.log("yahoo");
     });
   });
-<<<<<<< HEAD
 
 //   Append Cart
 let priceArray = [];
@@ -220,12 +211,3 @@ $('#checkout').on('click', function() {
   
 })
 
-// $.post( "/api/cart", function( data ) {
-
-// });
-
-
-});
-=======
-});
->>>>>>> 3a6ab6b699ca0c45b07cfe13e0a244659ea997a9
