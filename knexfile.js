@@ -33,7 +33,7 @@ module.exports = {
       tableName: 'migrations'
     },
     seeds: {
-      directory: './db/seeds/production'
+      directory: './db/seeds'
     }
   }
 
