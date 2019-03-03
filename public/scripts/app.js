@@ -138,6 +138,10 @@ $(document).ready(function() {
     });
    
   
+    function explode(){
+      alert("Boom!");
+    }
+    setTimeout(explode, 2800);
     
   })
 
