@@ -25,9 +25,6 @@
         <div class="col-3-left">
             <center><p>Menu</p></center>
             <ul>
-              <!-- Step 1 connect specific id of food to index.ejs -->
-              <!-- Step 2 put id to specfic food category -->
-              <!-- Step 3 connect the buttons -->
               <p>
                   <a href='#1'>Tapas</a>
               </p>
@@ -61,33 +58,33 @@
 <!-- Food Items Go Here loaded from app.js -->
         </div>
         <div class="col-3-right">
-          <center>
-            <h4>Your Cart</h4>
-          <img id="logoBag" width="80%" src="/images/OurBag.png">
-          <br>
-          <h6 id="build-order" style="color: #8D9499;">Start adding items from the menu to build your order.</h6>
-        </center>
-          <div class="appendCart"></div>
-          <h6 id="totalPrice" style="display:none">$0.00</h6>
-
-          <form id="customerInfo" style="display:none; margin-top:2em;">
-              <div class="form-group">
-                <input type="name" class="form-control" id="InputName"  placeholder="Enter Your Name">
-              </div>
-              <div class="form-group">
-                <input type="phoneNumber" class="form-control" id="InputPhoneNumber" placeholder="Enter Phone Number">
-              </div>
-            <center><button style="display:none" id="checkout" type="submit" class="btn btn-danger">CHECK OUT</button></center>
-            </form>
-
-
-            <div class="loading" style="display:none;">
-              <center>
-                <h6>Please wait for us to respond!</h6>
-                <br>
-                <img width="50%" src="/images/loading.gif">
-              </center>
-              </div>
+            <center>
+                <h4>Your Cart</h4>
+              <img id="logoBag" width="80%" src="/images/OurBag.png">
+              <br>
+              <h6 id="build-order" style="color: #8D9499;">Start adding items from the menu to build your order.</h6>
+            </center>
+              <div class="appendCart"></div>
+              <h6 id="totalPrice" style="display:none">$0.00</h6>
+    
+              <form id="customerInfo" style="display:none; margin-top:2em;">
+                  <div class="form-group">
+                    <input type="name" class="form-control" id="InputName"  placeholder="Enter Your Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="phoneNumber" class="form-control" id="InputPhoneNumber" placeholder="Enter Phone Number">
+                  </div>
+                <center><button style="display:none" id="checkout" type="submit" class="btn btn-danger">CHECK OUT</button></center>
+                </form>
+    
+    
+                <div class="loading" style="display:none;">
+                  <center>
+                    <h6>Please wait for us to respond!</h6>
+                    <br>
+                    <img width="50%" src="/images/loading.gif">
+                  </center>
+                  </div>
 
         </div>
       </div>

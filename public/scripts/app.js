@@ -101,6 +101,8 @@ $(document).ready(function() {
         }
         $("#logoBag").css("display", "none");
         $("#build-order").css("display", "none");
+        $("#customerInfo").show();
+        $("#checkout").show();
       });
     });
   });
@@ -112,10 +114,11 @@ $(document).ready(function() {
     $('#checkout').hide();
     $('#totalPrice').hide();
     $('.cart-item').hide();
+    $('.cart-item-delete').hide();
   
     let customerName = ($('#InputName').val());
     let customerPhone = ($('#InputPhoneNumber').val());
-    let orderTotal = ($('#totalPrice').text().replace("Total Price $ ", ""));
+    let orderTotal = ($('#totalPrice').text().replace("$", ""));
     let orderItems = ($('.cart-item').text())
   
     let addOrder = {
