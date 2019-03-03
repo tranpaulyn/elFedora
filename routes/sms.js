@@ -15,15 +15,15 @@ module.exports = (knex) => {
 
     let twiml = new MessagingResponse();
     alert(req.body.Body);
-    // twiml.message('The Robots are coming! Head for the hills!');
+    twiml.message('The Robots are coming! Head for the hills!');
   
-    // res.writeHead(200, {'Content-Type': 'text/xml'});
-    // res.end(twiml.toString());
-      client.messages.create({
-        to: '17804995473',
-        from: '12038067699',
-        body: ((req.body.Body).replace('Sent from your Twilio trial account - ', ''))
-    })
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+    //   client.messages.create({
+    //     to: '17804995473',
+    //     from: '12038067699',
+    //     body: ((req.body.Body).replace('Sent from your Twilio trial account - ', ''))
+    // })
 
 })
 
