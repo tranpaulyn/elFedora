@@ -17,6 +17,27 @@ body {
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
   padding-top: 1em;
+
+  a {
+    color: grey;
+    font-family: helvetica;
+    font-weight: 500;
+    font-size: 1.05em;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    border-left: 3px solid red;
+    padding-left: 10px;
+    color: black;
+    font-weight: 700;
+  }
+  
+  a:active {
+    color: black;
+  }
+
+
 }
 
 
@@ -55,5 +76,7 @@ footer {
   }
   
 }
+
+
 
 

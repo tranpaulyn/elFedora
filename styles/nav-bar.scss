@@ -1,7 +1,6 @@
 #nav-bar {
   position: fixed;
-  top: 0px;
-  height: 10%;
+  height: 6em;
   width: 100%;
   padding-right: 3em;
   padding-left: 3em;
@@ -12,7 +11,6 @@
     font-family: 'Homemade Apple', cursive;
     color: #ffffff;
     font-size: 200%;
-    position: relative;
   }
   
   .logo {
@@ -24,7 +22,8 @@
   
   .contact {
     float: right;
-    padding: 1em;
+    padding: 0.5em;
+    color: #fff;
   }
 
 }
