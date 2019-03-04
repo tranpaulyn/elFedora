@@ -119,6 +119,7 @@ $(document).ready(function() {
     $('#totalPrice').hide();
     $('.cart-item').hide();
     $('.cart-item-delete').hide();
+    $('#totalText').hide();
   
     let customerName = ($('#InputName').val());
     let customerPhone = ($('#InputPhoneNumber').val());
