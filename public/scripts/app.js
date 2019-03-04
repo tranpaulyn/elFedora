@@ -54,13 +54,15 @@ $(document).ready(function() {
      }).done((menu) => {
       $("#menu-wrapper").on("click", ".add-to-cart", function() {
         const itemId = $(this).attr("data-id");
+        const $textTotal = $('#totalText')
         const item = menu.find(i => i.id === Number(itemId));
         const $totalPriceElement = $("#totalPrice");
         const totalPrice = Number($totalPriceElement.text().substr(1));
         $totalPriceElement.show();
         $totalPriceElement.text(
-          `\$${(totalPrice + Number(item.price)).toFixed(2)}`
+           `\$${(totalPrice + Number(item.price)).toFixed(2)}`
         );
+        $textTotal.show()
         let $cartItem = $(`#cart-item-${itemId}`);
         if ($cartItem.length) {
           const count = Number($cartItem.attr("data-count")) + 1;
@@ -87,6 +89,7 @@ $(document).ready(function() {
                 $("#build-order").css("display", "block");
                 $totalPriceElement.hide();
                 $('#customerInfo').hide();
+                $textTotal.hide()
               }
             } else {
               $cartItem.attr("data-count", cartItemCount);
@@ -116,6 +119,7 @@ $(document).ready(function() {
     $('#totalPrice').hide();
     $('.cart-item').hide();
     $('.cart-item-delete').hide();
+    $('#totalText').hide();
   
     let customerName = ($('#InputName').val());
     let customerPhone = ($('#InputPhoneNumber').val());
