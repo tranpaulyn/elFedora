@@ -3,7 +3,8 @@ ElFedora is a take-out app that has a fully functioning interface built with Twi
 
 
 ## Screenshots
-
+!["ScreenShot of Main page"](https://github.com/tranpaulyn/elFedora/blob/master/docs/Screenshot%20from%202019-03-04%2009-35-48.png)
+!["ScreenShot of Ordering Items"](https://github.com/tranpaulyn/elFedora/blob/master/docs/Screenshot%20from%202019-03-04%2009-36-27.png)
 
 
 ## Project Setup
