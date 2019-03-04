@@ -158,7 +158,7 @@ $(document).ready(function() {
   
     function explode(){
       $('.loading').hide();
-      $('.col-3-right').append(`<h6 id="time-estimate-message">Your order will be ready in 45 minutes!</h6>`);
+      $('.col-3-right').append(`<h6 id="time-estimate-message">We've received your order - please check your phone for a text message from the kitchen.</h6>`);
       $('.col-3-right').append(`<img id="neckbeard" src="/images/tenor.gif">`);
     }
     setTimeout(explode, 28000);
