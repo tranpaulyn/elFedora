@@ -1,4 +1,9 @@
-# Node Skeleton
+# ElFedora Food App
+ElFedora is a take-out app that has a fully functioning interface built with Twilo, Node Skeleton, Knex, EJS, Express, PG, Morgan, Dotenv, Nodemon, Body-Parser and NPM.
+
+
+
+
 
 ## Project Setup
 
@@ -27,5 +32,14 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
-
+- Express
+- Body-Parser
+- Twilo
+- Node Skeleton
+- Knex
+- EJS
+- PG
+- Morgan
+- Dotenv
+- Nodemon
 
