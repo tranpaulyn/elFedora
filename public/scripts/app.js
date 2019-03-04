@@ -107,12 +107,30 @@ $(document).ready(function() {
         $("#build-order").css("display", "none");
         $("#customerInfo").show();
         $("#checkout").show();
+        $('#neckbeard').hide();
+        $('#time-estimate-message').hide();
+
       });
     });
   });
   
   $('#checkout').on('click', function() {
     event.preventDefault();
+
+      
+    let customerName = ($('#InputName').val());
+    let customerPhone = ($('#InputPhoneNumber').val());
+    let orderTotal = ($('#totalPrice').text().replace("$", ""));
+    let orderItems = ($('.cart-item').text())
+
+    console.log(customerPhone.length);
+
+    if(customerPhone.length < 10 || customerPhone.length > 11) {
+      $('#phoneError').show().fadeTo(2000, 500).slideUp(500);
+    } else if (customerName === ''){
+      $('#nameError').show().fadeTo(2000, 500).slideUp(500);
+    } else {
+
     $('.loading').show();
     $('#customerInfo').hide();
     $('#checkout').hide();
@@ -120,11 +138,7 @@ $(document).ready(function() {
     $('.cart-item').hide();
     $('.cart-item-delete').hide();
     $('#totalText').hide();
-  
-    let customerName = ($('#InputName').val());
-    let customerPhone = ($('#InputPhoneNumber').val());
-    let orderTotal = ($('#totalPrice').text().replace("$", ""));
-    let orderItems = ($('.cart-item').text())
+
   
     let addOrder = {
       customerName: customerName,
@@ -144,11 +158,11 @@ $(document).ready(function() {
   
     function explode(){
       $('.loading').hide();
-      $('.col-3-right').append("<h6>Your order will be ready in 45 minutes!</h6>");
-      $('.col-3-right').append(`<img src="/images/tenor.gif">`);
+      $('.col-3-right').append(`<h6 id="time-estimate-message">Your order will be ready in 45 minutes!</h6>`);
+      $('.col-3-right').append(`<img id="neckbeard" src="/images/tenor.gif">`);
     }
     setTimeout(explode, 28000);
-    
+  }
   })
   
   });

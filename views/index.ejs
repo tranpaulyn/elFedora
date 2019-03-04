@@ -32,25 +32,25 @@
                   <a href="#menu-wrapper">Tapas</a>
               </p>
               <p>
-                  <a href='#12'>Soups</a>
+                  <a href='#10'>Soups</a>
               </p>
               <p>
-                  <a href='#14'>Salads</a>
+                  <a href='#12'>Salads</a>
               </p>
               <p>
-                  <a href='#16'>Quessadillas</a>
+                  <a href='#14'>Quessadillas</a>
               </p>
               <p>
-                  <a href='#19'>Tacos</a>
+                  <a href='#17'>Tacos</a>
               </p>
               <p>
-                  <a href='#22'>Tortas</a>
+                  <a href='#20'>Tortas</a>
               </p>
               <p>
-                  <a href='#26'>Enchiladas</a>
+                  <a href='#24'>Enchiladas</a>
               </p>
               <p>
-                  <a href='#29'>Mains</a>
+                  <a href='#27'>Mains</a>
               </p>
             </ul>
         </div>
@@ -68,27 +68,30 @@
               <h6 id="build-order" style="color: #8D9499;">Start adding items from the menu to build your order.</h6>
             </center>
               <div class="appendCart"></div>
-              <h6 id='totalText' style="display:none">
-                <b>Total Price: </b> <h6 id="totalPrice" style="display:none">$0.00</h6>
-              </h6>
+              <span id='totalText' style="display:none">
+                Total Price:  </span>
+                <span id="totalPrice" style="display:none">$0.00</span>
+             
     
               <form id="customerInfo" style="display:none; margin-top:2em;">
                   <div class="form-group">
                     <input type="name" class="form-control" id="InputName"  placeholder="Enter Your Name">
+                    <div id="nameError" class="alert alert-danger" style="display:none; margin-top:1em;">Please enter a name!</div>
                   </div>
                   <div class="form-group">
                     <input type="phoneNumber" class="form-control" id="InputPhoneNumber" placeholder="Enter Phone Number">
+                    <div id="phoneError" class="alert alert-danger" style="display:none; margin-top:1em;">Please enter a valid phone number - including area code.</div>
                   </div>
                 <center><button style="display:none" id="checkout" type="submit" class="btn btn-danger">CHECK OUT</button></center>
                 </form>
     
     
                 <div class="loading" style="display:none;">
-                  <center>
-                    <h6>Please wait for us to respond!</h6>
+                  
+                  <center><h6>Please wait for us to respond!</h6></center>
                     <br>
-                    <img width="50%" src="/images/loading.gif">
-                  </center>
+                  </center><img style="max-width: 90%; max-height: 90%; display: block; margin-left: auto; margin-right: auto;" src="/images/loading.gif"></center>
+                  
                   </div>
 
         </div>
@@ -102,16 +105,16 @@
     <footer>
       <div class="row">
         <div class="col-footer">
-          <h6>Location</h6>
+          <h4>Location</h4>
           <p>235 12th Ave SW</p>
           <p>Calgary, AB</p>
           <p>Canada</p>
         </div>
         <div class="col-footer">
-            <h6>Hours</h6>
-            <p>Sunday - Thursday</p>
+            <h4>Hours</h4>
+            <h6>Sunday - Thursday</h6>
             <p>11:30am — 11:00pm</p>
-            <p>Friday — Saturday</p>
+            <h6>Friday — Saturday</h6>
             <p>11:30am — 1:00am</p>
       </div>
     </footer>

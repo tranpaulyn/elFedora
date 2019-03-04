@@ -34,6 +34,23 @@
   .spacer {
     padding: 1em;
   }
+
+
+.cart-item-delete{
+  position: relative;
+  float: right;
+  top: -4.25em;
+}
+
+#totalText{
+  font-size: 1.5em;
+  position: relative;
+}
+
+#totalPrice{
+  font-size: 1.5em;
+  float: right;
+  }
 }
 
 
@@ -79,6 +96,20 @@
 .cd-top:hover {
   background-color: #e86256;
   opacity: 1;
+}
+
+#time-estimate-message {
+  display: block; 
+  margin-right: auto; 
+  margin-left: auto;
+}
+
+#neckbeard {
+  max-width: 90%; 
+  max-height: 90%; 
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
 }
 
 @media only screen and (min-width: 768px) {
